@@ -15,7 +15,7 @@ library(tidyverse)
 plastic_waste <- read_csv("data/plastic-waste.csv")
 ```
 
-```{r load-data, message=FALSE}
+```{r, message=FALSE}
 ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
   geom_histogram(binwidth = 0.2)
 ```
@@ -43,33 +43,44 @@ ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) +
 ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) +
   geom_density()
 ```
-```{r plastic-waste-density}
+```{r plastic-waste-density test}
 ggplot(plastic_waste, aes(x = plastic_waste_per_cap, color = continent)) +
   geom_density()
 ```
-Réponse à la question...
+```{r plastic-waste-density full color}
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, color = continent, fill = continent)) +
+  geom_density(alpha = 5)
+```
+```{r plastic-waste-density alpha change}
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, color = continent, fill = continent)) +
+  geom_density(alpha = 0.5)
+```
+
+Réponse à la question: Le réglage de la couleur (color et fill) se situent dans la région aes puisqu'elles sont en lien avec le mapping initial du jeu de données voulues pour le graphique, en associant des données à des propriétés. La transparence (alpha), quant à elle sert plus à l'esthétique du graphique chosi lui-même. L'épaisseur des lignes est une autre des caractéristiques visuelles réglées dans le geom_density(). Ces caractéristiques ne sont pas liées avec des données, mais seulement au visuel du graphique. 
 
 ### Exercise 3
 
 Boxplot:
 
 ```{r plastic-waste-boxplot}
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
+geom_boxplot()
 ```
 
 Violin plot:
 
 ```{r plastic-waste-violin}
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
+  geom_violin()
 ```
 
-Réponse à la question...
+Réponse à la question: Les violin plots permettent de voir la distribution des données, ce que les boxplot n'offrent pas. En effet, on voit mieux comment les données sont réparties
 
 ### Exercise 4
 
 
 ```{r plastic-waste-mismanaged}
-# insert code here
+ggplot(plastic_waste, aes(x = ))
 ```
 
 Réponse à la question...
