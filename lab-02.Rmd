@@ -108,7 +108,16 @@ Réponse à la question: Il semble avoir une relation plus forte dans le deuxiè
 ## Conclusion
 
 Recréez la visualisation:
-
+  
 ```{r recreate-viz}
-# insert code here
+plastic_waste_coastal <- plastic_waste %>% 
+  mutate(coastal_pop_prop = coastal_pop / total_pop) %>% 
+  filter(plastic_waste_per_cap < 3) 
 ```
+```{r recreate-viz part 2}
+ggplot(plastic_waste_coastal, aes(x = coastal_pop_prop, y = plastic_waste_per_cap, color = continent)) +
+  geom_point() +
+labs(title = "Quantité de déchet plastiques vs Proportion de la population côtière", subtitle = "Selon le continent", x = "Proportion de la population côtière (Coastal/total population)", y = "Nombre de déchets plastiques par habitant") +
+  geom_smooth(aes(group = 1), method = "loess", color = "black", se = TRUE)
+```
+
