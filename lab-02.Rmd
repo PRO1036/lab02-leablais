@@ -80,23 +80,30 @@ Réponse à la question: Les violin plots permettent de voir la distribution des
 
 
 ```{r plastic-waste-mismanaged}
-ggplot(plastic_waste, aes(x = ))
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste_per_cap)) +
+  geom_point()
 ```
-
-Réponse à la question...
+Réponse à la question: Ceux qui produisent plus de déchets, on une meilleure gestion de ces derniers, tandis que ceux qui ont une production moyenne de déchets ont une moins bonne gestion des déchets.
+```{r plastic-waste-mismanaged color}
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste_per_cap, color = continent)) +
+  geom_point()
+```
+Réponse à la question: Les pays plus développé tels que ceux d'amérique du Nord et d'Europe ont eu meilleur gestion de déchets en moyenne tandis que les pays moins développés tels que les pays d'Asie et d'Afrique ont une bonne gestion. L'Amérique du Nord produit toutefois plus de déchets que les autres continents en général.
 
 ### Exercise 5
 
 
 ```{r plastic-waste-population-total}
-# insert code here
+ggplot(plastic_waste, aes(x = total_pop, y = plastic_waste_per_cap, color = continent)) +
+  geom_point()
 ```
 
 ```{r plastic-waste-population-coastal}
-# insert code here
+ggplot(plastic_waste, aes(x = coastal_pop, y = plastic_waste_per_cap, color = continent)) +
+  geom_point()
 ```
 
-Réponse à la question...
+Réponse à la question: Il semble avoir une relation plus forte dans le deuxième graphique, soit netre la quantité de déchets plastiques par habitant et la population côtière. En effet, il semble que plus la population est grande, moins il y a de déchets.
 
 ## Conclusion
 
